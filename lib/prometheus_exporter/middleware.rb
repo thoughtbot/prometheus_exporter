@@ -13,7 +13,7 @@ class PrometheusExporter::Middleware
     if config[:instrument]
       if defined? Redis::Client
         MethodProfiler.patch(Redis::Client, [
-          :call, :call_pipeline
+          :call_v, :call_pipeline
         ], :redis, instrument: config[:instrument])
       end
       if defined? PG::Connection
